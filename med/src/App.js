@@ -1,10 +1,8 @@
 import React from 'react';
 
 import Login from "./Components/Login"
-import { Route } from "react-router-dom";
-import './App.css';
 
-import FormikSignupForm from './components/FormikSignupForm';
+import FormikSignupForm from "./Components/FormikSignupForm";
 
 
 
