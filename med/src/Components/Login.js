@@ -1,7 +1,8 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
+import * as Yup from "yup";
 
-const LoginPage = () => {
+const LoginPage = ({touched, errors}) => {
 
 
     return (
@@ -17,6 +18,7 @@ const LoginPage = () => {
                         placeholder="email"
                         />
                     </div>
+                    {touched.email && errors.email && <p className="errors">{errors.email}</p>}
                     <div className="password-box">
                         <Field
                         type="text"
@@ -24,6 +26,7 @@ const LoginPage = () => {
                         placeholder="password" 
                         />        
                     </div>
+                    {touched.password && errors.password && <p className="errors">{errors.password}</p>}
                 </Form>
                 <button>Login</button>
                 <button>Sign up</button>
@@ -40,12 +43,19 @@ const LoginPage = () => {
 }
 
 const FormikLoginForm = withFormik({
-    mapPropsToValues({ email, password, terms}) {
+    mapPropsToValues({ email, password }) {
         return {
             email: email || "",
             password: password || "",
         };
-    }
+    },
+    validationSchema: Yup.object().shape({
+        email: Yup.string().required("Email address is required!"),
+        password: Yup.string()
+            .required("Password is required")
+            .min(8, "Password should be 8 characters minimum.")
+            .matches(/(^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.{8,}))/, "Password must contain at least            one uppercase character and one special character")
+    })
 })(LoginPage);
 
 export default FormikLoginForm;
