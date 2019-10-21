@@ -3,7 +3,7 @@ import React from 'react';
 const MedCabinet = () => {
   return (
     <div>
-      <h1>MedCabinet</h1>
+      <h1>Private - After Login</h1>
     </div>
   );
 }
