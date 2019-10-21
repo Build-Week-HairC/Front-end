@@ -1,24 +1,22 @@
 import React from 'react';
-
-import Login from "./Components/Login"
-import { Route } from "react-router-dom";
-import './App.css';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import FormikSignupForm from './components/FormikSignupForm';
 
+import MedCabinet from './components/MedCabinet/MedCabinet';
+import Login from './components/Login';
 
-
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 
 function App() {
   return (
-    <div className="App">
-
-      <Login />
-
-      <FormikSignupForm />
-
-    </div>
+    <Router>
+      <div className="App">
+        <FormikSignupForm />
+        <Route exact path='/' component={Login}/>
+        <PrivateRoute path='/medcabinet' component={MedCabinet} />
+      </div>
+    </Router>
   );
 }
 
