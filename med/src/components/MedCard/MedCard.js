@@ -14,7 +14,12 @@ const MedCard = ({ fetchData, data }) => {
       <h1>MedCard info</h1>
       {
         data.map(strain => (
-          <span key={strain.strainid}>Description: {strain.description}</span>
+          <div key={strain.strainid}>
+            <h2>{strain.strainname}</h2>
+            <p>Rating: {strain.rating}</p>
+            <p>TYPE: {strain.type}</p>
+            <p>{strain.description}</p>
+          </div>
         ))
       }
     </div>
