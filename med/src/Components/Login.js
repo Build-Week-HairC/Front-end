@@ -2,11 +2,61 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
+
+const FormWrapper = styled.div` 
+.new-user-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #282c34;
+
+    .email-box {
+        padding: 5px;
+    }
+
+    .password-box {
+        padding: 5px;
+    }
+
+    .login {
+        padding: 5px 15px;
+        margin: 5px;
+    }
+
+    .sign-up {
+        padding: 5px 15px;
+        margin: 5px;
+    }
+
+    .newhere {
+        padding: 20px;
+    }
+
+    .create {
+        padding: 10px;
+    }
+}
+
+h1 {
+    color: whitesmoke;
+}
+
+h2 {
+    color: whitesmoke;
+}
+
+h3 {
+    color: whitesmoke;
+}
+`;
 
 const LoginPage = ({touched, errors}) => {
 
+  
 
     return (
+        <FormWrapper>
         <section className="login-page">
             <div className="new-user-form">
                 <h1>Med Cabinet</h1>
@@ -29,15 +79,19 @@ const LoginPage = ({touched, errors}) => {
                     </div>
                     {touched.password && errors.password && <p className="errors">{errors.password}</p>}
                 </Form>
-                <button>Login</button>
-                <button>Sign up</button>
+                <button className="login">Login</button>
+                <button className="sign-up">Sign up</button>
+                <div className="newhere">
                 <h3>New Around Here?</h3>
+                </div>
+                <div className="create">
                 <button>Create Account</button>
+                </div>
             </div>
 
 
         </section>
-
+        </FormWrapper>
 
 
     )
