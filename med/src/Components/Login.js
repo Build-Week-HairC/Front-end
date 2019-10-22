@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -30,7 +30,7 @@ const FormWrapper = styled.div`
     }
 
     .newhere {
-        padding: 20px;
+        padding: 10px;
     }
 
     .create {
@@ -52,8 +52,6 @@ h3 {
 `;
 
 const LoginPage = ({touched, errors}) => {
-
-  
 
     return (
         <FormWrapper>
@@ -80,7 +78,6 @@ const LoginPage = ({touched, errors}) => {
                     {touched.password && errors.password && <p className="errors">{errors.password}</p>}
                 </Form>
                 <button className="login">Login</button>
-                <button className="sign-up">Sign up</button>
                 <div className="newhere">
                 <h3>New Around Here?</h3>
                 </div>
