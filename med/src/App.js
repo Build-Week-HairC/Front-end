@@ -15,6 +15,7 @@ function App() {
         <FormikSignupForm />
         <Route exact path='/' component={Login}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
+        <MedCabinet />
       </div>
     </Router>
   );
