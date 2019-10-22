@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import { Link } from "@material-ui/core";
 
 const FormWrapper = styled.div` 
 .new-user-form {
@@ -58,7 +59,6 @@ const LoginPage = ({touched, errors}) => {
         <section className="login-page">
             <div className="new-user-form">
                 <h1>Med Cabinet</h1>
-                <h2>Welcome to Med Cabinet</h2>
                 <Form>
                     <div className="email-box">
                         <Field
@@ -77,7 +77,9 @@ const LoginPage = ({touched, errors}) => {
                     </div>
                     {touched.password && errors.password && <p className="errors">{errors.password}</p>}
                 </Form>
+                <Link to="/MedCabinet">
                 <button className="login">Login</button>
+                </Link>
                 <div className="newhere">
                 <h3>New Around Here?</h3>
                 </div>

@@ -20,7 +20,7 @@ const MedCabinet = () => {
         <h3>User email</h3>
       </div>
       <div className="search-my-favs">
-        <div>My Favorites</div>
+        <div>Find New Strains</div>
         <input
         type="text"
         placeholder="search"
