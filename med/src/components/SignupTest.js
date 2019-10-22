@@ -1,5 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from './utils/AxiosWithAuth';
+import axios from 'axios';
 
 class SignupTest extends React.Component {
   state = {
@@ -10,7 +11,6 @@ class SignupTest extends React.Component {
 
   handleChange = e => {
     this.setState({
-      ...this.state,
       [e.target.name]: e.target.value
     });
   };
@@ -18,25 +18,25 @@ class SignupTest extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    axiosWithAuth()
-      .post(
-        "https://medcabinet.herokuapp.com/createnewuser",
-        {
-          username: JSON.stringify(`${this.state.username}`),
-          password: JSON.stringify(`${this.state.password}`),
-          primaryemail: JSON.stringify(`${this.state.primaryemail}`)
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
+      axiosWithAuth()
+        .post(
+          "https://medcabinet.herokuapp.com/createnewuser",
+          {
+            'username': `${this.state.username}`,
+            'password': `${this.state.password}`,
+            'primaryemail': `${this.state.primaryemail}`
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
-        }
-      )
-      .then(res => { 
-        localStorage.setItem('token', res.data.payload)
-        this.props.history.push('/medcabinet');
-      })
-      .catch(err => console.log("Token not return", err));
+        )
+        .then(res => {
+          localStorage.setItem("token", res.data);
+          this.props.history.push("/medcabinet");
+        })
+        .catch(err => console.log("error", err));
   };
 
   render() {
@@ -64,7 +64,7 @@ class SignupTest extends React.Component {
             onChange={this.handleChange}
             placeholder="Primary Email"
           />
-          <button type="submit">Login</button>
+          <button type="submit">Sign up</button>
         </form>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from './utils/AxiosWithAuth';
+import axios from 'axios';
 
 class LoginTest extends React.Component {
   state = {
@@ -9,17 +10,14 @@ class LoginTest extends React.Component {
 
   handleChange = e => {
     this.setState({
- 
-        ...this.state,
         [e.target.name]: e.target.value
-
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    axiosWithAuth()
+    axios
       .post('https://medcabinet.herokuapp.com/login', 
       `grant_type=password&username=${this.state.username}&password=${this.state.password}`, {
         headers: {
@@ -27,7 +25,9 @@ class LoginTest extends React.Component {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       })
-      .then(res => console.log(res.data))
+      .then(res => { 
+        console.log(res.data)
+      })
       .catch(err => console.log('Token not return', err))
   }
 
