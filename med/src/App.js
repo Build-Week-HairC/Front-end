@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import FormikSignupForm from './components/FormikSignupForm';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import MedCabinet from './components/MedCabinet/MedCabinet';
 import Login from './components/Login';
@@ -16,6 +17,7 @@ function App() {
         <FormikSignupForm />
         <Route exact path='/' component={Login}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
+        <Footer />
       </div>
     </Router>
   );
