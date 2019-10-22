@@ -17,26 +17,25 @@ class SignupTest extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-      axiosWithAuth()
-        .post(
-          "https://medcabinet.herokuapp.com/createnewuser",
-          {
-            'username': `${this.state.username}`,
-            'password': `${this.state.password}`,
-            'primaryemail': `${this.state.primaryemail}`
-          },
-          {
-            headers: {
-              "Content-Type": "application/json"
-            }
+    axios
+      .post(
+        "https://medcabinet.herokuapp.com/createnewuser",
+        {
+          'username': `${this.state.username}`,
+          'password': `${this.state.password}`,
+          'primaryemail': `${this.state.primaryemail}`
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
           }
-        )
-        .then(res => {
-          localStorage.setItem("token", res.data);
-          this.props.history.push("/medcabinet");
-        })
-        .catch(err => console.log("error", err));
+        }
+      )
+      .then(res => {
+        localStorage.setItem("token", res.data);
+        // this.props.history.push("/medcabinet");
+      })
+      .catch(err => console.log("error", err));
   };
 
   render() {
