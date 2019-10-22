@@ -4,6 +4,7 @@ import FormikSignupForm from './components/FormikSignupForm';
 
 import MedCabinet from './components/MedCabinet/MedCabinet';
 import Login from './components/Login';
+import MedCard from './components/MedCard/MedCard';
 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
@@ -15,6 +16,7 @@ function App() {
         <FormikSignupForm />
         <Route exact path='/' component={Login}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
+        <Route exact path='/medcard' component={MedCard}/>
       </div>
     </Router>
   );
