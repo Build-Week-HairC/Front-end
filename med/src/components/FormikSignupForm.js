@@ -31,6 +31,7 @@ class SignupTest extends React.Component {
         }
       )
       .then(res => {
+        console.log(res);
         localStorage.setItem("token", res.data);
         // this.props.history.push("/medcabinet");
       })
