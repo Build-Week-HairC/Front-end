@@ -1,5 +1,4 @@
 .header {
-    border: 2px solid black;
     height: 75px;
     background-image: url('../assets/kush.jpg');
     background-size: 10% 90%;
@@ -16,6 +15,7 @@
     text-decoration: none;
     color: green;
     margin-bottom: 20px;
+    background-color: tan;
 }
 
 .app-heading {
