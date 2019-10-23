@@ -18,7 +18,7 @@ class SignupTest extends React.Component {
     e.preventDefault();
     axios
       .post(
-        "https://medcabinet.herokuapp.com/createnewuser",
+        "http://medcabinet.herokuapp.com/createnewuser",
         {
           'username': `${this.state.username}`,
           'password': `${this.state.password}`,

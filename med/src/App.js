@@ -8,11 +8,11 @@ import MedCabinet from "./Components/MedCabinet/MedCabinet";
 
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
 
-import Login from './components/Login';
-import MedCard from './components/MedCard/MedCard';
+import Login from './Components/Login';
+import MedCard from './Components/MedCard/MedCard';
 
 
 
