@@ -1,3 +1,7 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "react-redux": "^7.1.1",
+    "typeface-roboto": "0.0.75"
+  }
 }
