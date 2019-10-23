@@ -44,9 +44,9 @@ const MedCard = ({ fetchData, data }) => {
         data.map(strain => (
           <div key={strain.strainid}>
             <h2>{strain.strainname}</h2>
-            <span onClick={() => deleteStrain(strain)}>x</span>
+            <button onClick={() => deleteStrain(strain)}>Delete</button>
+            <button onClick={() => saveStrain(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
-            <span onClick={() => saveStrain(strain)}>o</span>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
           </div>
