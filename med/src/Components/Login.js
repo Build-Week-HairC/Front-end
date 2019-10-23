@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
 import { Link } from "@material-ui/core";
 
@@ -13,7 +12,7 @@ const FormWrapper = styled.div`
     background-color: #282c34;
 
     .email-box {
-        padding: 5px;
+        padding: 10px;
     }
 
     .password-box {
@@ -56,9 +55,8 @@ const LoginPage = ({touched, errors}) => {
 
     return (
         <FormWrapper>
-        <section className="login-page">
+        <div className="login-page">
             <div className="new-user-form">
-                <h1>Med Cabinet</h1>
                 <Form>
                     <div className="email-box">
                         <Field
@@ -89,7 +87,7 @@ const LoginPage = ({touched, errors}) => {
             </div>
 
 
-        </section>
+        </div>
         </FormWrapper>
 
 

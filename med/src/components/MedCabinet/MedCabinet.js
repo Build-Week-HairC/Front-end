@@ -1,35 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { withFormik, Form, Field } from "formik";
+import axios from 'axios';
 
-const MedCabinet = () => {
+const MedCabinet = ({ touched, errors, status }) => {
 
-  const [searchTerm, setSearchTerm] = useState([]);
-    
-  const handleChange = event => {
-      setSearchTerm(event.target.value);
-  };
-
+  const [query, setQuery] = useState([]);
   useEffect(() => {
-      //filter through data here//
-  });
+    status && setQuery(query => [...query, status]);
+  },[status]);
 
   return (
-    <div>
-      <h1>Med Cabinet Dashboard</h1>
-      <div className="user-info"> 
-        <h2>User</h2>
-        <h3>User email</h3>
-      </div>
-      <div className="search-my-favs">
-        <div>Find New Strains</div>
-        <input
-        type="text"
-        placeholder="search"
-        value={searchTerm}
-        onChange={handleChange}
+    <div className="dashboard-search">
+      <Form>
+        <Field 
+        type="text" 
+        name="effects" 
+        placeholder="Desired Effects" 
         />
-      </div>
+        <Field 
+        type="text" 
+        name="flavors" 
+        placeholder="Flavors" 
+        />
+        <Field 
+        type="text" 
+        name="symptoms" 
+        placeholder="May Relieve" 
+        />
+        <Field 
+        type="text" 
+        name="aromas" 
+        placeholder="Aromas" 
+        />
+        <button>Submit!</button>
+
+      </Form>
+      {query.map( weedCard => (
+        <ul key={query.id}>
+          <li>Effects: {query.effects}</li>
+          <li>Flavors: {query.flavors}</li>
+          <li>Symptoms: {query.symptoms}</li>
+          <li>Aromas: {query.aromas}</li>
+        </ul>
+
+      ))}
+
     </div>
+    
   );
 }
 
-export default MedCabinet;
+const FormikMedCabinet = withFormik({
+  mapPropsToValues({ effects, flavors, symptoms, aromas }) {
+
+    return {
+      effects: effects || "",
+      flavors: flavors || "",
+      symptoms: symptoms || "",
+      aromas: aromas || "",
+    }
+  },
+
+  handleSubmit(values, { setStatus }) {
+    axios.get("http://medcabinet.herokuapp.com/api/ds/", values)
+    .then(response => {
+      setStatus(response.data);
+    })
+    .catch(error => console.log(error.response));
+
+  }
+
+})(MedCabinet);
+
+export default FormikMedCabinet;
