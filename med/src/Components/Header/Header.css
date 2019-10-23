@@ -1,0 +1,31 @@
+.header {
+    height: 75px;
+    background-image: url('../assets/kush.jpg');
+    background-size: 10% 90%;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.anchor {
+    font-size: 20px;
+    border: 2px solid green;
+    text-decoration: none;
+    color: green;
+    margin-bottom: 20px;
+    background-color: tan;
+}
+
+.app-heading {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    color: green;
+}
+
+a:hover {
+    background-color: green;
+    color: black;
+}
