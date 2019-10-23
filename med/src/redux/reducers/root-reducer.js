@@ -1,7 +1,8 @@
-import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from "../actions";
+import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, FETCH_USER_SUCCESS } from "../actions";
 
 export const INITIAL_STATE = {
   data: [],
+  user: [],
   isFetching: false,
   error: ''
 }
@@ -12,21 +13,28 @@ const useReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetching: true,
-        error: ''
-      }
+        error: ""
+      };
     case FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        error: '',
+        error: "",
         data: action.payload
-      }
+      };
+    case FETCH_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: "",
+        user: action.payload
+      };
     case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: action.payload
-      }
+      };
     default:
       return state;
   }
