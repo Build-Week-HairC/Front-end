@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FormikSignupForm from "./Components/FormikSignupForm";
-import FormikQuestionForm from "./Components/Questionnaire";
+import FormikSignupForm from "./components/FormikSignupForm";
+import FormikQuestionForm from "./components/Questionnaire";
 
-import MedCabinet from "./Components/MedCabinet/MedCabinet";
+import MedCabinet from "./components/MedCabinet/MedCabinet";
 
 
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
