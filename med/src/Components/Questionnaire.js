@@ -66,7 +66,7 @@ const QuestionForm = () => {
     const [query, setQuery] = useState([]);
 
     useEffect (() => {
-        axios.get("http://medcabinet.herokuapp.com/api/ds/${creative,energizing,euphoric,relaxing,uplifting,citrus,lemon,spicy,sweet,bipolardisorder,chronicpain,depression,headaches,insomnia,migraines,PTSD,Stress,earthy,herbal,kush}")
+        axios.get("http://medcabinet.herokuapp.com/api/ds/creative,energizing,euphoric,relaxing,uplifting,citrus,lemon,spicy,sweet,bipolardisorder,chronicpain,depression,headaches,insomnia,migraines,PTSD,Stress,earthy,herbal,kush")
         .then(response => {
             console.log(response.data);
             setQuery(response.data);
@@ -77,12 +77,14 @@ const QuestionForm = () => {
             
         })
 
-    },[query]);
+    },[]);
 
     const handleInputChange = event => {
         setQuery(event.target.value);
     }
     
+    //axios is supposed to be inside onSubmit handler not a use effect
+    //need to make sure handleInputChange is hooked up to form
 
     return (
         <FormWrapper>
@@ -143,7 +145,7 @@ const QuestionForm = () => {
                     <button 
                         className="submit" 
                         value={query} 
-                        onChange={handleInputChange}>Submit!
+                        onSubmit="">Submit!
                     </button>
                 </div>
             </div>
