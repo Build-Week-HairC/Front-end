@@ -13,6 +13,7 @@ import Header from './components/Header/Header';
 
 import Login from './components/LoginTest';
 import MedCard from './components/MedCard/MedCard';
+import SavedStrains from './components/SavedStrains';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route exact path='/' component={Login}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
         <Route exact path='/medcard' component={MedCard}/>
+        <Route exact path='/favorites' component={SavedStrains} />
         <Footer />
       </div>
     </Router>
