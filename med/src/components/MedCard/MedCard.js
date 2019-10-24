@@ -46,13 +46,13 @@ const MedCard = ({ fetchData, data }) => {
   
   const addStrain = (strain) => {
     console.log('ADD STRAIN', strain)
-    const newStrain = {
-      strain: strain.strain,
-      strainid: strain.strainid,
-      effects: strain.effects,
-      flavors: strain.flavors
-    }
-    setFavorites([...favorites, newStrain]);
+      const newStrain = {
+        strain: strain.strain,
+        strainid: strain.strainid,
+        effects: strain.effects,
+        flavors: strain.flavors
+      }
+      setFavorites([...favorites, newStrain]);
   }
   
   
@@ -81,7 +81,7 @@ const MedCard = ({ fetchData, data }) => {
       <h2>Favoites</h2>
       {
         favorites.map(strain => (
-          <div key={Date.now()}>
+          <div key={strain.strainid}>
             <h2>{console.log(strain)}</h2>
             <span onClick={() => removeStrain(strain)}>&#9734; {strain.strain}</span>
             <p>Effects: {strain.effects}</p>
