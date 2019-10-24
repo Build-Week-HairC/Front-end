@@ -49,7 +49,8 @@ const MedCard = ({ fetchData, data }) => {
     const newStrain = {
       strain: strain.strain,
       strainid: strain.strainid,
-      effects: strain.effects
+      effects: strain.effects,
+      flavors: strain.flavors
     }
     setFavorites([...favorites, newStrain]);
   }
@@ -84,6 +85,7 @@ const MedCard = ({ fetchData, data }) => {
             <h2>{console.log(strain)}</h2>
             <span onClick={() => removeStrain(strain)}>&#9734; {strain.strain}</span>
             <p>Effects: {strain.effects}</p>
+            <p>Flavors: {strain.flavors}</p>
           </div>
         ))
         }
