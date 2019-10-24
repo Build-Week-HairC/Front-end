@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-
 import { fetchData, dsData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-
 import { removeStrain } from '../../redux/actions/index';
-
 import AddNewStrain from '../AddNewStrain';
+import styled from "styled-components";
 
 const MedCard = ({ fetchData, dsData, data }) => {
+
+  const MedCardWrapper = styled.div`
+    .medcard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+
+      .strain-card {
+        padding: 20px;
+      }
+    }
+
+  `;
+
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     dsData()
@@ -62,12 +75,13 @@ const MedCard = ({ fetchData, dsData, data }) => {
   }
 
   return (
-    <div>
-      <h1>MedCard info</h1>
+    <MedCardWrapper>
+    <div className="medcard">
+      <h1>MedCard Info</h1>
       <AddNewStrain />
       {
         data.map(strain => (
-          <div key={strain.strainid}>
+          <div className="strain-card" key={strain.strainid}>
             {console.log(strain)}
             <h2>{strain.strain}</h2>
             <button onClick={() => deleteStrain(strain)}>Delete</button>
@@ -78,7 +92,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
           </div>
         ))
       }
-      <h2>Favoites</h2>
+      <h2>Favorites</h2>
       {
         favorites.map(strain => (
           <div key={strain.strainid}>
@@ -90,6 +104,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
         ))
         }
     </div>
+    </MedCardWrapper>
   )
 }
 
