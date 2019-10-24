@@ -10,6 +10,15 @@ export const REMOVE_STRAIN = 'REMOVE_STRAIN';
 export const ADD_STRAIN = 'ADD_STRAIN';
 
 // action creator0
+export const dsData = () => dispatch => {
+  dispatch({ type: START_FETCHING });
+
+  axios
+    .get('https://medcabinet.herokuapp.com/api/ds/sativa')
+    .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
+}
+
 export const fetchData = () => dispatch => {
   dispatch({ type: START_FETCHING });
 
