@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import FormikSignupForm from "./components/FormikSignupForm";
+import SignupTest from "./components/FormikSignupForm";
 import FormikQuestionForm from "./components/Questionnaire";
 
 import MedCabinet from "./components/MedCabinet/MedCabinet";
@@ -22,7 +22,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Route path='/signup' component={FormikSignupForm} />
+        <Route path='/signup' component={SignupTest} />
         <Route path='/questionnaire' component={FormikQuestionForm} />
         <Route exact path='/' component={Login}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
