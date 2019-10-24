@@ -11,7 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 
-import Login from './components/LoginTest';
+import LoginTest from './components/LoginTest';
 import MedCard from './components/MedCard/MedCard';
 import SavedStrains from './components/SavedStrains';
 
@@ -24,7 +24,7 @@ function App() {
         <Header />
         <Route path='/signup' component={SignupTest} />
         <Route path='/questionnaire' component={FormikQuestionForm} />
-        <Route exact path='/' component={Login}/>
+        <Route exact path='/' component={LoginTest}/>
         <PrivateRoute path='/medcabinet' component={MedCabinet} />
         <Route exact path='/medcard' component={MedCard}/>
         <Route exact path='/favorites' component={SavedStrains} />
