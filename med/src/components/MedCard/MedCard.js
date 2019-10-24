@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 import axios from 'axios';
 
-const MedCard = ({ fetchData, data }) => {
+import AddNewStrain from '../AddNewStrain';
+import Auth from '../utils/Auth';
 
+const MedCard = ({ fetchData, data }) => {
+  const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     fetchData()
  
@@ -27,8 +30,9 @@ const MedCard = ({ fetchData, data }) => {
 
   // Save strain to user
   const saveStrain = strain => {
+    // Auth.isAuthenticated()
     axiosWithAuth()
-    .post(`https://medcabinet.herokuapp.com/strains/strain/user`, strain)
+    .post(`https://medcabinet.herokuapp.com/strains/strain`, strain)
     .then(res => {
       console.log(res)
     })
@@ -37,15 +41,21 @@ const MedCard = ({ fetchData, data }) => {
     })
   }
 
+  // Save without axios
+  const saveStrainTest = (e, strain) => {
+    setFavorites(favorites.concat(strain))
+  }
+
   return (
     <div>
       <h1>MedCard info</h1>
+      <AddNewStrain />
       {
         data.map(strain => (
           <div key={strain.strainid}>
             <h2>{strain.strainname}</h2>
             <button onClick={() => deleteStrain(strain)}>Delete</button>
-            <button onClick={() => saveStrain(strain)}>Save</button>
+            <button onClick={() => saveStrainTest(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>

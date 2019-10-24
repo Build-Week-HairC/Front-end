@@ -1,6 +1,7 @@
 import React from 'react';
 import { axiosWithAuth } from './utils/AxiosWithAuth';
 import axios from 'axios';
+import Auth from './utils/Auth';
 
 class LoginTest extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class LoginTest extends React.Component {
       `grant_type=password&username=${this.state.username}&password=${this.state.password}`, {
         headers: {
           Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
         }
       })
       .then(res => { 
@@ -51,7 +52,7 @@ class LoginTest extends React.Component {
         onChange={this.handleChange}
         placeholder='Password'
       />
-      <button type='submit'>Login</button>
+      <button type='submit' onClick={() => Auth.login()}>Login</button>
     </form>
       </>
     )
