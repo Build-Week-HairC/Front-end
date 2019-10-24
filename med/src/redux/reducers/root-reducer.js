@@ -40,7 +40,7 @@ const useReducer = (state = INITIAL_STATE, action) => {
     case ADD_STRAIN:
       return {
         ...state,
-        data: [...state.data, action.payload]
+        saved: [...state.saved, action.payload]
       }
     case REMOVE_STRAIN:
       return {
