@@ -2,6 +2,7 @@ import React from 'react';
 import { axiosWithAuth } from './utils/AxiosWithAuth';
 import styled from "styled-components";
 
+
 class AddNewStrain extends React.Component {
 
   state = {
@@ -27,19 +28,17 @@ class AddNewStrain extends React.Component {
 
   render() {
 
-    const AddWrapper = styled.div`
-      .strain-input {
+    const StrainWrapper = styled.div`
+      .button {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-      
-      .strain-box {
+        justify-content: center;
         margin: 10px;
       }
-      }
     `;
+
+    
     return (
-      <AddWrapper>
+      <StrainWrapper>
       <div className="strain-input">
         <form onSubmit={this.handleSubmit}>
         <input className="strain-box"
@@ -57,9 +56,11 @@ class AddNewStrain extends React.Component {
           placeholder='strain type'
         />
         </form>
+        <div className="button">
         <button type='submit'>Add New Strain</button>
+        </div>
       </div>
-      </AddWrapper>
+      </StrainWrapper>
     );
   }
 }
