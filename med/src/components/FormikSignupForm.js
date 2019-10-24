@@ -15,7 +15,6 @@ const StyledDiv = styled.div`
   border: 2px solid green;
   width: 200px;
   align-items: center;
-  margin-left: 760px;
   margin-top: 100px;
   padding: 20px;
 `
