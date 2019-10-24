@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 
-import { fetchData, dsData } from '../../redux/actions';
+import { fetchData, dsData } from '../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 import { removeStrain } from '../../redux/actions/index';
@@ -10,7 +10,7 @@ import { removeStrain } from '../../redux/actions/index';
 import AddNewStrain from '../AddNewStrain';
 import SavedStrains from '../SavedStrains';
 
-const MedCard = ({ fetchData, dsData, data }) => {
+const SavedStrains = ({ fetchData, dsData, data }) => {
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     // dsData()
@@ -66,24 +66,24 @@ const MedCard = ({ fetchData, dsData, data }) => {
 
   return (
     <div>
-      <h1>MedCard info</h1>
+      <h1>SavedStrains info</h1>
       <AddNewStrain />
-      <Route path='/favorites' component={SavedStrains} {...data} />
-      <Link to="/favorites">Liked</Link>
       {
         data.map(strain => (
           <div key={strain.strainid}>
             {console.log(strain)}
             <h2>{strain.strain}</h2>
-            <button onClick={() => deleteStrain(strain)}>&#10060;</button>
-            <button onClick={() => saveStrain(strain)}>&#128077;</button>
+            <button onClick={() => deleteStrain(strain)}>Delete</button>
+            <button onClick={() => saveStrain(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
           </div>
         ))
       }
-
+      <h2>Favoites</h2>
+      <Route path='/favorites' component={SavedStrains} {...data} />
+      <Link to="/favorites">Favorites</Link>
       {/*<SavedStrains />*/}
       { /*
         data.map(strain => (
@@ -107,4 +107,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchData, dsData })(MedCard);
+export default connect(mapStateToProps, { fetchData, dsData })(SavedStrains);
