@@ -18,10 +18,10 @@ const MedCard = ({ fetchData, data }) => {
   // Not sure on data to delete
   const deleteStrain = strain => {
     axiosWithAuth()
-    .delete(`https://medcabinet.herokuapp.com/strains/strain/${strain.strainid}`)
+    .delete(`https://medcabinet.herokuapp.com/strains/strain`, { data: {'strain': strain.strain}})
     .then(res => {
       console.log(res)
-      fetchData([...data.filter(s => s.id !== strain.strainid)])
+      // fetchData([...data.filter(s => s.id !== strain.strainid)])
     })
     .catch(err => {
       console.log('delete error', err)
@@ -29,9 +29,8 @@ const MedCard = ({ fetchData, data }) => {
   }
 
   // Save strain to user
-  /*
+  
   const saveStrain = strain => {
-    // Auth.isAuthenticated()
     axiosWithAuth()
     .post(`https://medcabinet.herokuapp.com/strains/strain`, strain)
     .then(res => {
@@ -41,7 +40,7 @@ const MedCard = ({ fetchData, data }) => {
       console.log('delete error', err)
     })
   }
-  */
+  
 
   
   const addStrain = (strain) => {
@@ -70,8 +69,8 @@ const MedCard = ({ fetchData, data }) => {
           <div key={strain.strainid}>
             {console.log(strain)}
             <h2>{strain.strain}</h2>
-            <button onClick={() => removeStrain(strain)}>Delete</button>
-            <button onClick={() => addStrain(strain)}>Save</button>
+            <button onClick={() => deleteStrain(strain)}>Delete</button>
+            <button onClick={() => saveStrain(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
@@ -83,7 +82,7 @@ const MedCard = ({ fetchData, data }) => {
         favorites.map(strain => (
           <div key={strain.strainid}>
             <h2>{console.log(strain)}</h2>
-            <span onClick={() => removeStrain(strain)}>&#9734; {strain.strain}</span>
+            <span onClick={() => deleteStrain(strain)}>&#9734; {strain.strain}</span>
             <p>Effects: {strain.effects}</p>
             <p>Flavors: {strain.flavors}</p>
           </div>

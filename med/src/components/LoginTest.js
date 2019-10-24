@@ -27,7 +27,7 @@ class LoginTest extends React.Component {
       })
       .then(res => { 
         console.log(res.data)
-        localStorage.setItem("token", res.data);
+        localStorage.setItem("token", res.data.access_token);
         this.props.history.push("/medcard");
       })
       .catch(err => console.log('Token not return', err))

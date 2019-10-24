@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { axiosWithAuth } from '../../components/utils/AxiosWithAuth';
 
 // action types
 export const START_FETCHING = 'START_FETCHING';
@@ -12,8 +13,8 @@ export const ADD_STRAIN = 'ADD_STRAIN';
 export const fetchData = () => dispatch => {
   dispatch({ type: START_FETCHING });
 
-  axios
-    .get('https://medcabinet.herokuapp.com/api/ds/sativa')
+  axiosWithAuth()
+    .get(`https://medcabinet.herokuapp.com/strains/strains/user`)
     .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
 }
