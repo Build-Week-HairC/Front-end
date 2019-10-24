@@ -1,5 +1,5 @@
 .footer {
-    height: 75px;
+    height: 90px;
     margin-top: 515px;
     background-color: green;
 }
@@ -7,7 +7,7 @@
 .copyright {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .nav{
