@@ -33,9 +33,10 @@ const SavedStrains = ({ fetchData, data }) => {
         data.map(strain => (
           <div key={strain.strainid}>
             <h2>{console.log(strain)}</h2>
+            <h2>{strain.strain}</h2>
             <p>Rating: {strain.rating}</p>
+            <button onClick={() => deleteStrain(strain)}>&#10060;</button>
             <span>&#9734; {strain.strain}</span>
-            <button onClick={() => deleteStrain(strain)}>Remove Strain</button>
             <p>{strain.description}</p>
             <p>TYPE: {strain.type}</p>
             <p>Effects: {strain.effects}</p>
