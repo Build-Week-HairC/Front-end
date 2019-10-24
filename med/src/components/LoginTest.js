@@ -1,6 +1,29 @@
 import React from 'react';
 import axios from 'axios';
 import Auth from './utils/Auth';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+const CustomForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+`
+
+const CustomDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+`
+
+const CustomButton = styled.button`
+  background-color: green;
+`
+
+const CustomSignUpButton = styled.button`
+  background-color: green;
+  width:150px;
+`
 
 class LoginTest extends React.Component {
   state = {
@@ -35,8 +58,8 @@ class LoginTest extends React.Component {
 
   render() {
     return (
-      <>
-      <form onSubmit={this.handleSubmit}>
+      <CustomDiv>
+      <CustomForm onSubmit={this.handleSubmit}>
       <input
         type='text'
         name='username'
@@ -51,9 +74,12 @@ class LoginTest extends React.Component {
         onChange={this.handleChange}
         placeholder='Password'
       />
-      <button type='submit' onClick={() => Auth.login()}>Login</button>
-    </form>
-      </>
+      <CustomButton type='submit' onClick={() => Auth.login()}>Login</CustomButton>
+      <Link to="/signup">
+      <CustomSignUpButton>New Here? Sign Up!</CustomSignUpButton>
+      </Link>
+    </CustomForm>
+      </CustomDiv>
     )
   }
 }
