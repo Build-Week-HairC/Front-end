@@ -1,5 +1,4 @@
 import React from 'react';
-import { axiosWithAuth } from './utils/AxiosWithAuth';
 import axios from 'axios';
 import Auth from './utils/Auth';
 

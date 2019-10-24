@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 
 import { fetchData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-import axios from 'axios';
 
 import AddNewStrain from '../AddNewStrain';
-import Auth from '../utils/Auth';
 
 const MedCard = ({ fetchData, data }) => {
   const [favorites, setFavorites] = useState([]);
@@ -29,6 +27,7 @@ const MedCard = ({ fetchData, data }) => {
   }
 
   // Save strain to user
+  /*
   const saveStrain = strain => {
     // Auth.isAuthenticated()
     axiosWithAuth()
@@ -40,10 +39,20 @@ const MedCard = ({ fetchData, data }) => {
       console.log('delete error', err)
     })
   }
+  */
 
+  const addStrain = (strain) => {
+    console.log('ADD STRAIN', strain)
+    const newStrain = {
+      strain: strain,
+    }
+    setFavorites([...favorites, newStrain]);
+  }
+  
   // Save without axios
   const saveStrainTest = (e, strain) => {
-    setFavorites(favorites.concat(strain))
+    console.log('SAVE STRAIN', strain)
+    addStrain(strain)
   }
 
   return (
@@ -53,15 +62,24 @@ const MedCard = ({ fetchData, data }) => {
       {
         data.map(strain => (
           <div key={strain.strainid}>
-            <h2>{strain.strainname}</h2>
+            {console.log(strain)}
+            <h2>{strain.strain}</h2>
             <button onClick={() => deleteStrain(strain)}>Delete</button>
-            <button onClick={() => saveStrainTest(strain)}>Save</button>
+            <button onClick={(e) => saveStrainTest(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
           </div>
         ))
       }
+      <h2>Favoites</h2>
+      {
+        favorites.map(strain => (
+          <div key={Date.now()}>
+            <h2>{console.log(strain)}</h2>
+          </div>
+        ))
+        }
     </div>
   )
 }

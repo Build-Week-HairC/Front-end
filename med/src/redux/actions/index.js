@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { axiosWithAuth } from '../../components/utils/AxiosWithAuth';
-import Auth from '../../components/utils/Auth';
 
 // action types
 export const START_FETCHING = 'START_FETCHING';
