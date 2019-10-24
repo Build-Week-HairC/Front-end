@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
+import { removeStrain } from '../../redux/actions/index';
+
 import AddNewStrain from '../AddNewStrain';
 
 const MedCard = ({ fetchData, data }) => {
@@ -41,18 +43,21 @@ const MedCard = ({ fetchData, data }) => {
   }
   */
 
+  
   const addStrain = (strain) => {
     console.log('ADD STRAIN', strain)
     const newStrain = {
-      strain: strain,
+      strain: strain.strain,
+      strainid: strain.strainid,
+      effects: strain.effects
     }
     setFavorites([...favorites, newStrain]);
   }
   
+  
   // Save without axios
-  const saveStrainTest = (e, strain) => {
-    console.log('SAVE STRAIN', strain)
-    addStrain(strain)
+  const removeStrain = strain => {
+    setFavorites([...favorites.filter(c => c.strainid !== strain.strainid)])
   }
 
   return (
@@ -64,8 +69,8 @@ const MedCard = ({ fetchData, data }) => {
           <div key={strain.strainid}>
             {console.log(strain)}
             <h2>{strain.strain}</h2>
-            <button onClick={() => deleteStrain(strain)}>Delete</button>
-            <button onClick={(e) => saveStrainTest(strain)}>Save</button>
+            <button onClick={() => removeStrain(strain)}>Delete</button>
+            <button onClick={() => addStrain(strain)}>Save</button>
             <p>Rating: {strain.rating}</p>
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
@@ -77,6 +82,8 @@ const MedCard = ({ fetchData, data }) => {
         favorites.map(strain => (
           <div key={Date.now()}>
             <h2>{console.log(strain)}</h2>
+            <span onClick={() => removeStrain(strain)}>&#9734; {strain.strain}</span>
+            <p>Effects: {strain.effects}</p>
           </div>
         ))
         }
@@ -87,7 +94,7 @@ const MedCard = ({ fetchData, data }) => {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    data: state.data
+    data: state.data,
   }
 }
 

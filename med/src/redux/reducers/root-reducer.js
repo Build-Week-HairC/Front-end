@@ -1,8 +1,10 @@
-import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, FETCH_USER_SUCCESS } from "../actions";
+import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, FETCH_USER_SUCCESS, ADD_STRAIN, REMOVE_STRAIN } from "../actions";
+import { removeStrainItem, addStrainToFavorites } from '../utils';
 
 export const INITIAL_STATE = {
   data: [],
   user: [],
+  saved: [],
   isFetching: false,
   error: ''
 }
@@ -35,6 +37,16 @@ const useReducer = (state = INITIAL_STATE, action) => {
         isFetching: false,
         error: action.payload
       };
+    case ADD_STRAIN:
+      return {
+        ...state,
+        data: [...state.data, action.payload]
+      }
+    case REMOVE_STRAIN:
+      return {
+        ...state,
+        data: removeStrainItem(state.data, action.payload)
+      }
     default:
       return state;
   }
