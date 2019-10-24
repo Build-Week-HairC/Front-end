@@ -14,9 +14,8 @@ const StyledDiv = styled.div`
   justify-content: center;
   border: 2px solid green;
   width: 200px;
-  align-items: center;
-  margin-left: 760px;
-  margin-top: 100px;
+  align-items: center;;
+  margin: 100px auto 0 auto;
   padding: 20px;
 `
 
