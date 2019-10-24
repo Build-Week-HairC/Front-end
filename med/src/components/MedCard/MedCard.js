@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchData } from '../../redux/actions';
+import { fetchData, dsData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 import { removeStrain } from '../../redux/actions/index';
 
 import AddNewStrain from '../AddNewStrain';
 
-const MedCard = ({ fetchData, data }) => {
+const MedCard = ({ fetchData, dsData, data }) => {
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    fetchData()
+    dsData()
  
-  }, [fetchData])
+  }, [dsData])
 
   // Not sure on data to delete
   const deleteStrain = strain => {
@@ -21,6 +21,7 @@ const MedCard = ({ fetchData, data }) => {
     .delete(`https://medcabinet.herokuapp.com/strains/strain`, { data: {'strain': strain.strain}})
     .then(res => {
       console.log(res)
+      fetchData();
       // fetchData([...data.filter(s => s.id !== strain.strainid)])
     })
     .catch(err => {
@@ -99,4 +100,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchData })(MedCard);
+export default connect(mapStateToProps, { fetchData, dsData })(MedCard);
