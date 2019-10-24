@@ -1,5 +1,29 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const SignUp = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+`
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  border: 2px solid green;
+  width: 200px;
+  align-items: center;
+  margin-left: 760px;
+  margin-top: 100px;
+  padding: 20px;
+`
+
+const CustomButton = styled.button`
+  background-color: green;
+  padding: 10px;
+`
 
 class SignupTest extends React.Component {
   state = {
@@ -40,8 +64,8 @@ class SignupTest extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <StyledDiv>
+        <SignUp onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="username"
@@ -63,9 +87,9 @@ class SignupTest extends React.Component {
             onChange={this.handleChange}
             placeholder="Primary Email"
           />
-          <button type="submit">Sign up</button>
-        </form>
-      </div>
+          <CustomButton type="submit">Sign up</CustomButton>
+        </SignUp>
+      </StyledDiv>
     );
   }
 }
