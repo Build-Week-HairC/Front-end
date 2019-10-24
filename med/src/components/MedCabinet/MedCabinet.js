@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import RyanMedCard from "./Components/RyanMedCard";
-
+import axios from "axios";
+import RyanMedCard from "../RyanMedCard";
 
 const MedCabinet = () => {
 
   const [query, setQuery] = useState([]);
 
   useEffect(() => {
-    axios.get("http://medcabinet.herokuapp.com/api/ds/fruity")
+    axios.get("http://medcabinet.herokuapp.com/api/ds/indica")
     .then(response => {
     console.log(response.data);
     setQuery(response.data)
@@ -17,7 +16,7 @@ const MedCabinet = () => {
     console.log("the data was not returned", error);
     
     });
-  }, [query]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
