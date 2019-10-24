@@ -11,7 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 
-import Login from './components/Login';
+import Login from './components/LoginTest';
 import MedCard from './components/MedCard/MedCard';
 
 
