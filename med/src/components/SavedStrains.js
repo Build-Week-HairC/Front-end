@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 
 import { fetchData, deleteStrain } from '../redux/actions/index';
-import { axiosWithAuth } from '../components/utils/AxiosWithAuth';
 import MedCard from './MedCard/MedCard';
 
 const SavedStrains = ({ fetchData, data, deleteStrain }) => {
@@ -53,7 +52,6 @@ const SavedStrains = ({ fetchData, data, deleteStrain }) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     data: state.data,
     saved: state.saved

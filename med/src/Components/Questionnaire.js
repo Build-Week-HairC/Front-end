@@ -79,9 +79,11 @@ const QuestionForm = () => {
 
     },[]);
 
+    /*
     const handleInputChange = event => {
         setQuery(event.target.value);
     }
+    */
     
     //axios is supposed to be inside onSubmit handler not a use effect
     //need to make sure handleInputChange is hooked up to form
@@ -157,7 +159,7 @@ const QuestionForm = () => {
 }
 
 const FormikQuestionForm = withFormik({
-    mapPropsToValues({}) {
+    mapPropsToValues() {
         
     }
 })(QuestionForm);
