@@ -14,6 +14,7 @@ const CustomDiv = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  margin: 100px auto 0 35px;
 `
 
 const CustomButton = styled.button`
@@ -23,6 +24,11 @@ const CustomButton = styled.button`
 const CustomSignUpButton = styled.button`
   background-color: green;
   width:150px;
+`
+
+const WeedDiv = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 class LoginTest extends React.Component {
@@ -80,6 +86,7 @@ class LoginTest extends React.Component {
     `;
 
     return (
+    <div>
       <CustomDiv>
       <CustomForm onSubmit={this.handleSubmit}>
       <input
@@ -102,6 +109,10 @@ class LoginTest extends React.Component {
       </Link>
     </CustomForm>
       </CustomDiv>
+      <WeedDiv>
+        <img src = "https://www.austinchronicle.com/binary/0031/pols_feature32.jpg" alt="weed" />
+      </WeedDiv>
+    </div>
     )
   }
 }
