@@ -45,7 +45,7 @@ const useReducer = (state = INITIAL_STATE, action) => {
     case REMOVE_STRAIN:
       return {
         ...state,
-        data: removeStrainItem(state.data, action.payload)
+        saved: state.saved.filter(element => element !== action.payload)
       }
     default:
       return state;

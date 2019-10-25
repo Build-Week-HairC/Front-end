@@ -5,12 +5,12 @@ import { Route, Link } from 'react-router-dom';
 import { fetchData, dsData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
-import { removeStrain } from '../../redux/actions/index';
+import { saveStrain } from '../../redux/actions/index';
 
 import AddNewStrain from '../AddNewStrain';
 import SavedStrains from '../SavedStrains';
 
-const MedCard = ({ fetchData, dsData, data }) => {
+const MedCard = ({ fetchData, dsData, data, saveStrain }) => {
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     // dsData()
@@ -33,7 +33,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
   }
 
   // Save strain to user
-  
+  /*
   const saveStrain = strain => {
     axiosWithAuth()
     .post(`https://medcabinet.herokuapp.com/strains/strain`, strain)
@@ -44,9 +44,9 @@ const MedCard = ({ fetchData, dsData, data }) => {
       console.log('delete error', err)
     })
   }
+  */
   
-
-  
+  /*
   const addStrain = (strain) => {
     console.log('ADD STRAIN', strain)
       const newStrain = {
@@ -57,6 +57,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
       }
       setFavorites([...favorites, newStrain]);
   }
+  */
   
   
   // Save without axios
@@ -107,4 +108,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchData, dsData })(MedCard);
+export default connect(mapStateToProps, { fetchData, dsData, saveStrain })(MedCard);

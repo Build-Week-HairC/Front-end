@@ -28,12 +28,22 @@ export const fetchData = () => dispatch => {
     .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
 }
 
-export const saveStrain = (data) => dispatch => {
+export const saveStrain = (strain) => dispatch => {
   dispatch({ type: START_FETCHING });
 
-  axios
-    .post('https://medcabinet.herokuapp.com/strains/strain', data)
-    .then(res => dispatch({ type: FETCH_USER_SUCCESS, payload: data }))
+  axiosWithAuth()
+    .post('https://medcabinet.herokuapp.com/strains/strain', strain)
+    .then(res => dispatch({ type: ADD_STRAIN, payload: strain }))
+    .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
+}
+
+export const deleteStrain = (strain) => dispatch => {
+  dispatch({ type: START_FETCHING });
+
+  axiosWithAuth()
+    .delete(`https://medcabinet.herokuapp.com/strains/strain`, { data: {'strain': strain.strain}})
+    .then(dispatch({ type: REMOVE_STRAIN, payload: strain }))
+    .then(dispatch(fetchData()))
     .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
 }
 
