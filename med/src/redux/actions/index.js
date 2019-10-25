@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosWithAuth } from '../../components/utils/AxiosWithAuth';
+import { axiosWithAuth } from '../../Components/utils/AxiosWithAuth';
 
 // action types
 export const START_FETCHING = 'START_FETCHING';

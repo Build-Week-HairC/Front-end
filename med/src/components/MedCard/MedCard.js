@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
-
 import { fetchData, dsData } from '../../redux/actions';
 import { axiosWithAuth } from '../utils/AxiosWithAuth';
-
 import { removeStrain } from '../../redux/actions/index';
-
 import AddNewStrain from '../AddNewStrain';
 import SavedStrains from '../SavedStrains';
+import styled from "styled-components";
 
+const MedWrapper = styled.div`
+  .strain-card {
+    // display: flex;
+    // flex-direction: column;
+    padding: 30px;
+  }
+`;
+
+const MedCardWrapper = styled.div`
+  .medcard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 const MedCard = ({ fetchData, dsData, data }) => {
+
+
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
     // dsData()
@@ -65,14 +81,18 @@ const MedCard = ({ fetchData, dsData, data }) => {
   }
 
   return (
-    <div>
-      <h1>MedCard info</h1>
+    <MedCardWrapper>
+    <div className="medcard">
+      <h1>MedCard Info</h1>
       <AddNewStrain />
+     
       <Route path='/favorites' component={SavedStrains} {...data} />
       <Link to="/favorites">Liked</Link>
+      
       {
         data.map(strain => (
-          <div key={strain.strainid}>
+          <MedWrapper>
+          <div className="strain-card" key={strain.strainid}>
             {console.log(strain)}
             <h2>{strain.strain}</h2>
             <button onClick={() => deleteStrain(strain)}>&#10060;</button>
@@ -81,6 +101,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
             <p>TYPE: {strain.type}</p>
             <p>{strain.description}</p>
           </div>
+          </MedWrapper>
         ))
       }
 
@@ -96,6 +117,7 @@ const MedCard = ({ fetchData, dsData, data }) => {
         ))
         */}
     </div>
+    </MedCardWrapper>
   )
 }
 

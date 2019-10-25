@@ -63,6 +63,28 @@ class LoginTest extends React.Component {
   }
 
   render() {
+
+    const LoginWrapper = styled.div`
+      .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+
+        .text {
+          // display: flex;
+          margin: 10px;
+        }
+
+        .button {
+          // display: flex;
+          align-items: center;
+          margin: 10px;
+        }
+      }
+
+    `;
+
     return (
     <div>
       <CustomDiv>

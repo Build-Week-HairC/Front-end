@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 
 import { fetchData, dsData } from '../redux/actions/index';
-import { axiosWithAuth } from '../components/utils/AxiosWithAuth';
+import { axiosWithAuth } from '../Components/utils/AxiosWithAuth';
 import MedCard from './MedCard/MedCard';
 
 const SavedStrains = ({ fetchData, data }) => {
