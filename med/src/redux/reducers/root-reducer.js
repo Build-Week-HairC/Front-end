@@ -1,5 +1,4 @@
 import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, FETCH_USER_SUCCESS, ADD_STRAIN, REMOVE_STRAIN } from "../actions";
-import { removeStrainItem, addStrainToFavorites } from '../utils';
 
 export const INITIAL_STATE = {
   data: [],
