@@ -19,6 +19,17 @@ const StyledDiv = styled.div`
   padding: 20px;
 `
 
+const StyledDiv2 = styled.div`
+  display: flex;
+  justify-content: center;
+  border: 2px solid green;
+  width: 300px;
+  align-items: center;;
+  margin: 100px auto 0 auto;
+  padding: 20px;
+  background-color: green;
+`
+
 const CustomButton = styled.button`
   background-color: green;
   padding: 10px;
@@ -63,6 +74,7 @@ class SignupTest extends React.Component {
 
   render() {
     return (
+    <div>
       <StyledDiv>
         <SignUp onSubmit={this.handleSubmit}>
           <input
@@ -89,6 +101,10 @@ class SignupTest extends React.Component {
           <CustomButton type="submit">Sign up</CustomButton>
         </SignUp>
       </StyledDiv>
+      <StyledDiv2>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/51fEBRNxTGL._AC_.jpg" alt="weed" />
+      </StyledDiv2>
+      </div>
     );
   }
 }
