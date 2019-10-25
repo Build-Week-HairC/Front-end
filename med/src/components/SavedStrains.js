@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 
-import { fetchData, dsData } from '../redux/actions/index';
-import { axiosWithAuth } from '../Components/utils/AxiosWithAuth';
+import { fetchData, deleteStrain } from '../redux/actions/index';
 import MedCard from './MedCard/MedCard';
 
-const SavedStrains = ({ fetchData, data }) => {
+const SavedStrains = ({ fetchData, data, deleteStrain }) => {
   useEffect(() => {
     fetchData()
  
   }, [fetchData])
 
   // Not sure on data to delete
+  /*
   const deleteStrain = strain => {
     axiosWithAuth()
     .delete(`https://medcabinet.herokuapp.com/strains/strain`, { data: {'strain': strain.strain}})
@@ -25,6 +25,7 @@ const SavedStrains = ({ fetchData, data }) => {
       console.log('delete error', err)
     })
   }
+  */
 
   return (
     <div>
@@ -51,10 +52,10 @@ const SavedStrains = ({ fetchData, data }) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     data: state.data,
+    saved: state.saved
   }
 }
 
-export default connect(mapStateToProps, { fetchData })(SavedStrains);
+export default connect(mapStateToProps, { fetchData, deleteStrain })(SavedStrains);

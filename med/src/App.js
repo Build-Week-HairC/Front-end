@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignupTest from "./Components/FormikSignupForm";
-import FormikQuestionForm from "./Components/Questionnaire";
+import SignupTest from "./components/FormikSignupForm";
+import FormikQuestionForm from "./components/Questionnaire";
 
-import MedCabinet from "./Components/MedCabinet/MedCabinet";
+import MedCabinet from "./components/MedCabinet/MedCabinet";
 
 
-import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-import Footer from './Components/Footer/Footer';
-import Header from './Components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
-import LoginTest from './Components/LoginTest';
-import MedCard from './Components/MedCard/MedCard';
-import SavedStrains from './Components/SavedStrains';
+import LoginTest from './components/LoginTest';
+import MedCard from './components/MedCard/MedCard';
+import SavedStrains from './components/SavedStrains';
 import styled from "styled-components";
 
 function App() {

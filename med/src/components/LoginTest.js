@@ -63,7 +63,7 @@ class LoginTest extends React.Component {
   }
 
   render() {
-
+    /* 
     const LoginWrapper = styled.div`
       .login {
         display: flex;
@@ -82,9 +82,8 @@ class LoginTest extends React.Component {
           margin: 10px;
         }
       }
-
     `;
-
+    */
     return (
     <div>
       <CustomDiv>

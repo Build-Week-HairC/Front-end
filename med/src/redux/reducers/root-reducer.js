@@ -1,5 +1,4 @@
 import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, FETCH_USER_SUCCESS, ADD_STRAIN, REMOVE_STRAIN } from "../actions";
-import { removeStrainItem, addStrainToFavorites } from '../utils';
 
 export const INITIAL_STATE = {
   data: [],
@@ -45,7 +44,7 @@ const useReducer = (state = INITIAL_STATE, action) => {
     case REMOVE_STRAIN:
       return {
         ...state,
-        data: removeStrainItem(state.data, action.payload)
+        saved: state.saved.filter(element => element !== action.payload)
       }
     default:
       return state;
